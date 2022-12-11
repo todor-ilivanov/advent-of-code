@@ -12,6 +12,7 @@ import (
 	"advent/day07"
 	"advent/day08"
 	"advent/day09"
+	"advent/day10"
 )
 
 func main() {
@@ -23,7 +24,8 @@ func main() {
 	// solveDay06()
 	// solveDay07()
 	// solveDay08()
-	solveDay09()
+	// solveDay09()
+	solveDay10()
 }
 
 func solveDay01() {
@@ -94,4 +96,12 @@ func solveDay09() {
 	fmt.Println(part1)
 	part2 := day09.SolvePart2(10)
 	fmt.Println(part2)
+}
+
+func solveDay10() {
+	fmt.Println("----Day 10----")
+	part1 := day10.Solve()
+	fmt.Println(part1)
+	// part2 := day09.SolvePart2(10)
+	// fmt.Println(part2)
 }
