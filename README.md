@@ -15,7 +15,7 @@ import (
 
 func Solve() int {
 
-	input := utils.ReadFileToString("day10/input.txt")
+	input := utils.ReadFileToString("dayN/input.txt")
 	rows := strings.Split(input, "\n")
 
 	fmt.Println(rows)
