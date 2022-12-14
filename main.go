@@ -32,7 +32,7 @@ func main() {
 	// solveDay10()
 	// solveDay11()
 	// solveDay12()
-	solveDay13()
+	// solveDay13()
 	solveDay14()
 }
 
@@ -136,6 +136,7 @@ func solveDay13() {
 
 func solveDay14() {
 	fmt.Println("----Day 14----")
-	part1 := day14.Solve()
+	part1, part2 := day14.Solve()
 	fmt.Println(part1)
+	fmt.Println(part2)
 }
