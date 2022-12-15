@@ -1,7 +1,6 @@
 package day14
 
 import (
-	"math"
 	"strings"
 
 	"advent/utils"
@@ -78,14 +77,14 @@ func drawLine(caveMap map[pos]string, prev, curr pos) map[pos]string {
 	caveMap[curr] = "#"
 
 	if dir.row != 0 {
-		for i := 0; i < abs(prev.row-curr.row); i++ {
+		for i := 0; i < utils.Abs(prev.row-curr.row); i++ {
 			newPos := pos{prev.row + (dir.row * i), prev.col}
 			caveMap[newPos] = "#"
 		}
 	}
 
 	if dir.col != 0 {
-		for i := 0; i < abs(prev.col-curr.col); i++ {
+		for i := 0; i < utils.Abs(prev.col-curr.col); i++ {
 			newPos := pos{prev.row, prev.col + (dir.col * i)}
 			caveMap[newPos] = "#"
 		}
@@ -136,9 +135,4 @@ func getDir(p1, p2 pos) pos {
 	}
 
 	return pos{0, 0}
-}
-
-func abs(num int) int {
-	numFloat := float64(num)
-	return int(math.Abs(numFloat))
 }

@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 )
@@ -36,4 +37,9 @@ func Min(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func Abs(num int) int {
+	numFloat := float64(num)
+	return int(math.Abs(numFloat))
 }

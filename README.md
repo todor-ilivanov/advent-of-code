@@ -13,14 +13,14 @@ import (
 	"advent/utils"
 )
 
-func Solve() int {
+func Solve() (int, int) {
 
 	input := utils.ReadFileToString("dayN/input.txt")
 	rows := strings.Split(input, "\n")
 
 	fmt.Println(rows)
 
-	return 0
+	return 0, 0
 }
 ```
 
