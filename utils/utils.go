@@ -43,3 +43,7 @@ func Abs(num int) int {
 	numFloat := float64(num)
 	return int(math.Abs(numFloat))
 }
+
+func Trim(str string) string {
+	return str[:len(str)-1]
+}
