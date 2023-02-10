@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	solveDay11()
+	solveDayN()
 }
 
 func solveDayN() {
