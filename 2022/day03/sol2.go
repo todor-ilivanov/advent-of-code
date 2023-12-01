@@ -12,7 +12,7 @@ import (
 const groupSize int = 3
 
 func SolvePart2() int {
-	b, err := os.ReadFile("day03/input.txt")
+	b, err := os.ReadFile("2022/day03/input.txt")
 
 	if err != nil {
 		fmt.Print(err)

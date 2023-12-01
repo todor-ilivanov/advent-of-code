@@ -11,7 +11,7 @@ import (
 
 func SolvePart2() int {
 
-	str := utils.ReadFileToString("day01/input.txt")
+	str := utils.ReadFileToString("2022/day01/input.txt")
 
 	allReadings := strings.Split(str, "\n\n")
 	readingsArr := []int{}

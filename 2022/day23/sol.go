@@ -1,7 +1,6 @@
 package day23
 
 import (
-	"fmt"
 	"math"
 	"strings"
 
@@ -15,7 +14,7 @@ type Pos struct {
 
 func Solve(rounds int) (int, int) {
 
-	input := utils.ReadFileToString("day23/input.txt")
+	input := utils.ReadFileToString("2022/day23/input.txt")
 	rows := strings.Split(input, "\n")
 
 	elves := initElves(rows)
@@ -25,8 +24,6 @@ func Solve(rounds int) (int, int) {
 	for i := 0; i < rounds; i++ {
 
 		elves = playRound(elves, dirs)
-		fmt.Println(elves)
-
 		frontDir := dirs[0]
 		dirs = dirs[1:]
 		dirs = append(dirs, frontDir)
@@ -40,9 +37,8 @@ func Solve(rounds int) (int, int) {
 		minCol = utils.Min(minCol, pos.col)
 		maxCol = utils.Max(maxCol, pos.col)
 	}
-	fmt.Println(minRow, maxRow, minCol, maxCol)
+
 	area := (maxRow - minRow) * (maxCol - minCol)
-	fmt.Println(area)
 	ans := area - len(elves)
 
 	return ans, 0

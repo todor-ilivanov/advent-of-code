@@ -21,7 +21,7 @@ const CUBE_SIDES int = 6
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day18/input.txt")
+	input := utils.ReadFileToString("2022/day18/input.txt")
 	rows := strings.Split(input, "\n")
 
 	cubes := make([]Cube, 0)

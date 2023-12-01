@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"advent/day02/dayutils"
+	"advent/2022/day02/dayutils"
 	"advent/utils"
 )
 
@@ -15,7 +15,7 @@ const drawScore int = 3
 
 func SolvePart1() int {
 
-	str := utils.ReadFileToString("day02/input.txt")
+	str := utils.ReadFileToString("2022/day02/input.txt")
 
 	var decryptMap = make(map[string][2]string)
 

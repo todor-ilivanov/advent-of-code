@@ -10,7 +10,7 @@ import (
 
 func SolvePart1() int {
 
-	str := utils.ReadFileToString("day01/input.txt")
+	str := utils.ReadFileToString("2022/day01/input.txt")
 
 	allReadings := strings.Split(str, "\n\n")
 

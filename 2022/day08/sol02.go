@@ -9,7 +9,7 @@ import (
 
 // solution is embarrasing... uplaoding it anyway
 func SolvePart2() int {
-	input := utils.ReadFileToString("day08/input.txt")
+	input := utils.ReadFileToString("2022/day08/input.txt")
 	rows := strings.Split(input, "\n")
 
 	grid, visMap := initGridsPart2(rows)

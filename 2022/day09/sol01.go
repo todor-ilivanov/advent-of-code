@@ -12,7 +12,7 @@ type pos struct {
 }
 
 func SolvePart1() int {
-	input := utils.ReadFileToString("day09/input.txt")
+	input := utils.ReadFileToString("2022/day09/input.txt")
 	rows := strings.Split(input, "\n")
 
 	dirMap := make(map[string]pos)

@@ -19,7 +19,7 @@ type node struct {
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day12/input.txt")
+	input := utils.ReadFileToString("2022/day12/input.txt")
 	rows := strings.Split(input, "\n")
 
 	grid, start, end := initGrid(rows)

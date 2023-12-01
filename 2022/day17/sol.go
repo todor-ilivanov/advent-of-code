@@ -20,7 +20,7 @@ var dirIdx int
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day17/input.txt")
+	input := utils.ReadFileToString("2022/day17/input.txt")
 	dirs := strings.Split(input, "")
 
 	var grid [][]string

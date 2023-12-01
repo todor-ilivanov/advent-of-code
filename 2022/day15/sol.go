@@ -21,7 +21,7 @@ var Y int = 2000000
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day15/input.txt")
+	input := utils.ReadFileToString("2022/day15/input.txt")
 	rows := strings.Split(input, "\n")
 
 	var beaconsAtY []int

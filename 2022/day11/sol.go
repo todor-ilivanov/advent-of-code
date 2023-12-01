@@ -30,7 +30,7 @@ var m int = 1
 
 func Solve(rounds int, divisor int) int {
 
-	input := utils.ReadFileToString("day11/input.txt")
+	input := utils.ReadFileToString("2022/day11/input.txt")
 	monkeysRaw := strings.Split(input, "Monkey")
 
 	monkeys, monkeyInspections := loadMonkeys(monkeysRaw)

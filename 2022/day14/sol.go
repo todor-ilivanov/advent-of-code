@@ -13,7 +13,7 @@ type pos struct {
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day14/input.txt")
+	input := utils.ReadFileToString("2022/day14/input.txt")
 	rows := strings.Split(input, "\n")
 
 	caveMap := make(map[pos]string)

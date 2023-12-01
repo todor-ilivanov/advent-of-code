@@ -16,7 +16,7 @@ type Monkey struct {
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day21/input.txt")
+	input := utils.ReadFileToString("2022/day21/input.txt")
 	rows := strings.Split(input, "\n")
 
 	monkeys := populateMonkeysMap(rows)

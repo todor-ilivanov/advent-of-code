@@ -1,4 +1,4 @@
-package dayutils
+package day05
 
 import (
 	"strings"

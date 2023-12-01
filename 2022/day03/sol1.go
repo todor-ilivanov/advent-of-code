@@ -11,7 +11,7 @@ import (
 
 func SolvePart1() int {
 
-	str := utils.ReadFileToString("day03/input.txt")
+	str := utils.ReadFileToString("2022/day03/input.txt")
 	rucksacks := strings.Split(str, "\n")
 
 	var sum int

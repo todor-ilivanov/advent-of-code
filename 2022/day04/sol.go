@@ -9,7 +9,7 @@ import (
 )
 
 func Solve() (int, int) {
-	b, err := os.ReadFile("day04/input.txt")
+	b, err := os.ReadFile("2022/day04/input.txt")
 
 	if err != nil {
 		fmt.Print(err)

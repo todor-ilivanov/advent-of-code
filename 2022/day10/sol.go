@@ -11,7 +11,7 @@ var crt [40 * 6]string
 
 func Solve() int {
 
-	input := utils.ReadFileToString("day10/input.txt")
+	input := utils.ReadFileToString("2022/day10/input.txt")
 	rows := strings.Split(input, "\n")
 
 	cycle := 0

@@ -3,7 +3,7 @@ package day02
 import (
 	"strings"
 
-	"advent/day02/dayutils"
+	"advent/2022/day02/dayutils"
 	"advent/utils"
 )
 
@@ -11,7 +11,7 @@ const pointsForWin int = 6
 const pointsForDraw int = 3
 
 func SolvePart2() int {
-	str := utils.ReadFileToString("day02/input.txt")
+	str := utils.ReadFileToString("2022/day02/input.txt")
 
 	var decryptMap = make(map[string]string)
 

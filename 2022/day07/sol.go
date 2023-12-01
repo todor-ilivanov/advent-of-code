@@ -22,7 +22,7 @@ var totalSizes map[*dir]int = make(map[*dir]int)
 
 func Solve() (int, int) {
 
-	input := utils.ReadFileToString("day07/input.txt")
+	input := utils.ReadFileToString("2022/day07/input.txt")
 
 	rows := strings.Split(input, "\n")
 

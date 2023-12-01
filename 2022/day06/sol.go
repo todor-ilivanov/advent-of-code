@@ -6,7 +6,7 @@ import (
 
 func SolveForWindowSize(windowSize int) int {
 
-	readings := utils.ReadFileToString("day06/input.txt")
+	readings := utils.ReadFileToString("2022/day06/input.txt")
 	charCounts := make(map[rune]int)
 
 	for i := 0; i < windowSize; i++ {

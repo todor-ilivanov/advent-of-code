@@ -4,13 +4,12 @@ import (
 	"regexp"
 	"strings"
 
-	"advent/day05/dayutils"
 	"advent/utils"
 )
 
 func SolvePart2() string {
-	stacks := dayutils.InitStacksFromFile("day05/init-stacks.txt")
-	movesStr := utils.ReadFileToString("day05/input.txt")
+	stacks := InitStacksFromFile("2022/day05/init-stacks.txt")
+	movesStr := utils.ReadFileToString("2022/day05/input.txt")
 	moves := strings.Split(movesStr, "\n")
 
 	for _, move := range moves {
