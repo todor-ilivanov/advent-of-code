@@ -20,7 +20,7 @@ func ReadFileToString(name string) string {
 func StringToInt(str string) int {
 	num, err := strconv.Atoi(str)
 	if err != nil {
-		fmt.Print(err)
+		fmt.Println(err)
 	}
 	return num
 }
