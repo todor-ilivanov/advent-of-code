@@ -29,6 +29,7 @@ import (
 	y23d03 "advent/2023/day03"
 	y23d04 "advent/2023/day04"
 	y23d05 "advent/2023/day05"
+	y23d06 "advent/2023/day06"
 )
 
 func main() {
@@ -93,6 +94,8 @@ func main() {
 			y23d04.Run()
 		case "05":
 			y23d05.Run()
+		case "06":
+			y23d06.Run()
 		}
 	default:
 		fmt.Println("Year or  not recognized")
