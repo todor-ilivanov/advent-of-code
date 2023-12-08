@@ -2,7 +2,6 @@ package day07
 
 import (
 	"advent/utils"
-	"fmt"
 	"sort"
 	"strings"
 )
@@ -36,38 +35,67 @@ func newHand(handStr string, bid int) *hand {
 		charCounts[char]++
 	}
 
-	rank, pairs, triplets := 0, 0, 0
+	pairs, triplets := 0, 0
 
 	for _, v := range charCounts {
 		switch v {
 		case 5:
-			rank = 6
+			return &hand{6, handStr, bid}
 		case 4:
-			rank = 5
+			return &hand{5, handStr, bid}
 		case 3:
-			triplets += 1
+			triplets++
 		case 2:
-			pairs += 1
-		}
-
-		if rank > 0 {
-			break
+			pairs++
 		}
 	}
 
-	if pairs == 1 && triplets == 1 {
-		rank = 4
-	} else if triplets == 1 {
-		rank = 3
-	} else if rank == 0 {
-		rank = pairs
-	}
-
+	rank := determineCardRank(triplets, pairs)
 	return &hand{rank, handStr, bid}
 }
 
-func newHand2(handStr string, bid int) *hand {
-	return &hand{}
+func newHandWithJoker(handStr string, bid int) *hand {
+	charCounts := make(map[rune]int)
+	jCount := 0
+	maxFreq := 0
+
+	for _, char := range handStr {
+		if char == 'J' {
+			jCount++
+		} else {
+			charCounts[char]++
+		}
+		maxFreq = utils.Max(maxFreq, charCounts[char])
+	}
+
+	pairs, triplets := 0, 0
+	for _, v := range charCounts {
+		switch v {
+		case 3:
+			triplets++
+		case 2:
+			pairs++
+		}
+	}
+
+	switch maxFreq + jCount {
+	case 5:
+		return &hand{6, handStr, bid}
+	case 4:
+		return &hand{5, handStr, bid}
+	case 3:
+		if jCount > 0 {
+			triplets++
+			pairs = utils.Max(0, pairs-1)
+		}
+	case 2:
+		if jCount > 0 {
+			pairs++
+		}
+	}
+
+	rank := determineCardRank(triplets, pairs)
+	return &hand{rank, handStr, bid}
 }
 
 func Solve() (int, int) {
@@ -75,6 +103,7 @@ func Solve() (int, int) {
 	rows := strings.Split(input, "\n")
 
 	var hands []*hand
+	var handsWithJoker []*hand
 
 	for _, row := range rows {
 		tokens := strings.Split(row, " ")
@@ -83,31 +112,60 @@ func Solve() (int, int) {
 
 		hand := newHand(handStr, bid)
 		hands = append(hands, hand)
+
+		handWithJoker := newHandWithJoker(handStr, bid)
+		handsWithJoker = append(handsWithJoker, handWithJoker)
 	}
 
-	sort.Slice(hands, func(i, j int) bool {
-		if hands[i].rank == hands[j].rank {
-			return compareHands(hands[i].handStr, hands[j].handStr)
-		}
-		return hands[i].rank < hands[j].rank
-	})
+	sortHands(hands, false)
 
 	total := 0
 	for i := 0; i < len(hands); i++ {
 		total += (i + 1) * hands[i].bid
-		fmt.Println(hands[i].rank, hands[i].handStr, hands[i].bid)
 	}
 
-	return total, 0
+	sortHands(handsWithJoker, true)
+
+	totalWithJoker := 0
+	for i := 0; i < len(handsWithJoker); i++ {
+		totalWithJoker += (i + 1) * handsWithJoker[i].bid
+	}
+
+	return total, totalWithJoker
 }
 
-func compareHands(h1, h2 string) bool {
+func determineCardRank(triplets, pairs int) int {
+	if pairs == 1 && triplets == 1 {
+		return 4
+	} else if triplets == 1 {
+		return 3
+	}
+	return pairs
+}
+
+func sortHands(hands []*hand, joker bool) {
+	sort.Slice(hands, func(i, j int) bool {
+		if hands[i].rank == hands[j].rank {
+			return compareHands(hands[i].handStr, hands[j].handStr, joker)
+		}
+		return hands[i].rank < hands[j].rank
+	})
+}
+
+func compareHands(h1, h2 string, joker bool) bool {
 	for i := 0; i < len(h1); i++ {
 		if h1[i] == h2[i] {
 			continue
 		}
 		r1, r2 := rune(h1[i]), rune(h2[i])
-		return CARDS[r1] < CARDS[r2]
+		return getCardPower(r1, joker) < getCardPower(r2, joker)
 	}
 	return true
+}
+
+func getCardPower(card rune, joker bool) int {
+	if card == 'J' && joker {
+		return 1
+	}
+	return CARDS[card]
 }

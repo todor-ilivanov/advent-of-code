@@ -6,7 +6,7 @@ import (
 )
 
 func Run() {
-	fmt.Println("----Day 06----")
+	fmt.Println("----Day 07----")
 
 	start := time.Now()
 	part1, part2 := Solve()
