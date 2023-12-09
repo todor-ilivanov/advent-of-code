@@ -4,29 +4,11 @@ Go repository for the solutions of AOC over the years.
 
 ## Boilerplate for each day
 
-1. Paste input in `input.txt`
+1. Run `newday.sh 2023 01` - creates a new dir and generates scaffold (`run.go`, `sol.go` and `input.txt`)
 
-2. `run.go` - dayN's folder:
+2. Input needs to be pasted manually
 
-```go
-package dayN
-
-import (
-	"fmt"
-)
-
-func Run() {
-	fmt.Println("----Day N----")
-	part1, part2 := SolvePart1(), SovlvePart2()
-	fmt.Println(part1)
-	fmt.Println(part2)
-}
-
-```
-
-3. Implement the solutions in the day's package
-
-4. `main.go` - in the project root, add a new case for the year/day:
+3. `main.go` - in the project root, add a new case for the year/day:
 
 ```go
 package main
@@ -54,10 +36,7 @@ func main() {
 			y23d01.Run()
 		}
 		...
-	default:
-		fmt.Println("Year or  not recognized")
-	}
 }
 ```
 
-5. `go run main.go 2022 01`
+4. `go run main.go 2023 01`
