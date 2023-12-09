@@ -5,6 +5,7 @@ import (
 	"math"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func ReadFileToString(name string) string {
@@ -76,4 +77,15 @@ func Multiply(nums []int) int {
 		sum *= num
 	}
 	return sum
+}
+
+func ParseSpaceSeparatedInts(row string) []int {
+	slice := make([]int, 0)
+
+	for _, numStr := range strings.Split(row, " ") {
+		num := StringToInt(numStr)
+		slice = append(slice, num)
+	}
+
+	return slice
 }
