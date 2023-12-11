@@ -2,7 +2,6 @@ package day10
 
 import (
 	"advent/utils"
-	"fmt"
 	"math"
 	"strings"
 )
@@ -47,26 +46,15 @@ func Solve() (int, int) {
 
 	// start for input is |
 	// start for sample is F
-	startPipe := 'F'
+	startPipe := '|'
 	loopCoords := traverse(grid, startPipe, startR, startC)
 	grid[startR][startC] = startPipe
 
-	for r, row := range grid {
-		for c := range row {
-			coords := [2]int{r, c}
-			if !loopCoords[coords] {
-				grid[r][c] = '.'
-			}
-		}
-	}
+	replaceNonLoopPipes(grid, loopCoords)
 
-	// utils.PrintGrid[rune](grid)
+	enclosed := countEnclosed(grid, loopCoords)
 
-	left, right, top, bottom := getLoopBounds(loopCoords)
-
-	fmt.Println(left, right, top, bottom)
-
-	return (len(loopCoords) + 1) / 2, 0
+	return len(loopCoords) / 2, enclosed
 }
 
 func parseGrid(rows []string) ([][]rune, int, int) {
@@ -94,7 +82,7 @@ func traverse(grid [][]rune, startPipe rune, startR, startC int) map[[2]int]bool
 	prevR, prevC := startR, startC
 
 	loopCoords := make(map[[2]int]bool)
-	loopCoords[[2]int{r, c}] = true
+	loopCoords[[2]int{startR, startC}] = true
 
 	for grid[r][c] != 'S' {
 
@@ -122,11 +110,47 @@ func getLoopBounds(coords map[[2]int]bool) (int, int, int, int) {
 
 	for rowCol := range coords {
 		r, c := rowCol[0], rowCol[1]
-		left = utils.Min(r, left)
-		right = utils.Max(r, right)
-		top = utils.Min(c, top)
-		bottom = utils.Max(c, bottom)
+		left = utils.Min(c, left)
+		right = utils.Max(c, right)
+		top = utils.Min(r, top)
+		bottom = utils.Max(r, bottom)
 	}
 
 	return left, right, top, bottom
+}
+
+func replaceNonLoopPipes(grid [][]rune, loopCoords map[[2]int]bool) {
+	for r, row := range grid {
+		for c := range row {
+			coords := [2]int{r, c}
+			if !loopCoords[coords] {
+				grid[r][c] = '.'
+			}
+		}
+	}
+}
+
+func countEnclosed(grid [][]rune, loopCoords map[[2]int]bool) int {
+
+	left, right, top, bottom := getLoopBounds(loopCoords)
+	enclosed := 0
+
+	for r := top; r <= bottom; r++ {
+		inside := false
+		for c := left; c <= right; c++ {
+			el := grid[r][c]
+			if el == '|' || el == 'L' || el == 'J' {
+				inside = !inside
+			}
+
+			if inside && el == '.' {
+				enclosed++
+				grid[r][c] = 'X'
+			} else if el == '.' {
+				grid[r][c] = 'O'
+			}
+		}
+	}
+
+	return enclosed
 }
