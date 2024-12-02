@@ -2,7 +2,6 @@ package day01
 
 import (
 	"advent/utils"
-	"fmt"
 	"sort"
 	"strconv"
 	"strings"
@@ -33,7 +32,6 @@ func Solve() (int, int) {
 	part1 := 0
 	for i := 0; i < len(col1); i++ {
 		part1 += utils.Abs(col1[i] - col2[i])
-		fmt.Println(utils.Abs(col1[i] - col2[i]))
 	}
 
 	part2 := 0
