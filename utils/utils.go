@@ -49,6 +49,27 @@ func Trim(str string) string {
 	return str[:len(str)-1]
 }
 
+func ParseInputToGrid(input string) [][]rune {
+	rows := strings.Split(input, "\n")
+
+	ROWS := len(rows)
+	COLS := len(rows[0])
+
+	grid := make([][]rune, ROWS)
+
+	for i := 0; i < ROWS; i++ {
+		grid[i] = make([]rune, COLS)
+	}
+
+	for r, row := range rows {
+		for c, col := range row {
+			grid[r][c] = col
+		}
+	}
+
+	return grid
+}
+
 func PrintGrid[T any](grid [][]T) {
 	for _, row := range grid {
 		for _, col := range row {
